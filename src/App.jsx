@@ -67,7 +67,7 @@ export default function App() {
   });
 
   const [stories, setStories] = useState(() => {
-    const saved = localStorage.getItem('yukyoung_stories');
+    const saved = localStorage.getItem('yukyoung_stories_v2');
     return saved ? JSON.parse(saved) : INITIAL_STORIES;
   });
 
@@ -88,7 +88,7 @@ export default function App() {
   // 초기 마운트 시 Firebase Firestore 동기화
   useEffect(() => {
     fetchCollectionWithFallback('notices', 'yukyoung_notices', INITIAL_NOTICES).then(setNotices);
-    fetchCollectionWithFallback('stories', 'yukyoung_stories', INITIAL_STORIES).then(setStories);
+    fetchCollectionWithFallback('stories_v2', 'yukyoung_stories_v2', INITIAL_STORIES).then(setStories);
     fetchCollectionWithFallback('donations', 'yukyoung_donations', []).then(setDonations);
     fetchCollectionWithFallback('volunteers', 'yukyoung_volunteers', []).then(setVolunteers);
   }, []);
@@ -116,13 +116,13 @@ export default function App() {
   };
 
   const handleAddStory = async (newStory) => {
-    const saved = await saveDocumentWithFallback('stories', 'yukyoung_stories', newStory, stories);
+    const saved = await saveDocumentWithFallback('stories_v2', 'yukyoung_stories_v2', newStory, stories);
     setStories([saved, ...stories]);
   };
 
   const handleDeleteStory = async (id) => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
-      const updated = await deleteDocumentWithFallback('stories', 'yukyoung_stories', id, stories);
+      const updated = await deleteDocumentWithFallback('stories_v2', 'yukyoung_stories_v2', id, stories);
       setStories(updated);
       if (selectedStory && selectedStory.id === id) {
         setSelectedStory(null);

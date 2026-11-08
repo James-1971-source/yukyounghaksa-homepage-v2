@@ -19,7 +19,7 @@ const SLIDES = [
     titleTail: '을 키우는 곳',
     desc: '아이들의 오늘을 따뜻하게 지켜주고, 내일을 스스로 준비할 수 있도록 함께 걸어가는 아동양육시설 육영학사입니다.',
     eng: 'Warm Care, Healthy Growth, Hopeful Tomorrow',
-    bgImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1600&q=80',
+    bgImage: '/images/hero/hero-1.jpg',
     primaryAction: { label: '시설장 인사말', cat: 'about', sub: 'greeting' },
     secondaryAction: { label: '온라인 후원신청', cat: 'support', sub: 'donation-apply' }
   },
@@ -31,7 +31,7 @@ const SLIDES = [
     titleTail: '',
     desc: '일상생활·치료·학습·문화·진로탐색부터 퇴소 후 사후관리까지 아동 개개인의 눈높이에 맞춘 통합 양육 서비스를 제공합니다.',
     eng: 'Customized Growth & Self-Reliance Program',
-    bgImage: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=80',
+    bgImage: '/images/hero/hero-2.jpg',
     primaryAction: { label: '프로그램 안내', cat: 'program', sub: 'overview' },
     secondaryAction: { label: '자립정보센터', cat: 'independence', sub: 'info-list' }
   },
@@ -43,7 +43,7 @@ const SLIDES = [
     titleTail: '이 됩니다',
     desc: '후원자분들과 자원봉사자분들의 따뜻한 관심과 사랑은 육영학사 아동들이 건강한 사회 구성원으로 성장하는 가장 큰 힘입니다.',
     eng: 'Sharing Love & Building Hope Together',
-    bgImage: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1600&q=80',
+    bgImage: '/images/hero/hero-3.jpg',
     primaryAction: { label: '후원안내 보기', cat: 'support', sub: 'donation' },
     secondaryAction: { label: '자원봉사 신청', cat: 'support', sub: 'volunteer-apply' }
   }

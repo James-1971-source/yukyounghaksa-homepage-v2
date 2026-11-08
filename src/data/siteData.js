@@ -247,14 +247,14 @@ export const INITIAL_NOTICES = [
   }
 ];
 
-// 육영학사 이야기 (갤러리/활동소식)
+// 육영학사 이야기 (갤러리/활동소식 - 한국 아동 이미지 적용)
 export const INITIAL_STORIES = [
   {
     id: 1,
     title: "아이들과 함께한 가을맞이 힐링 나들이",
     date: "2026-09-18",
     category: "문화·여가",
-    img: "https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=600&q=80",
+    img: "/images/sub/sub-supporters.jpg",
     desc: "맑고 푸른 가을 하늘 아래, 아이들과 함께 자연 속에서 웃음꽃을 피우며 소중한 추억을 만들었습니다."
   },
   {
@@ -267,19 +267,19 @@ export const INITIAL_STORIES = [
   },
   {
     id: 3,
-    title: "달콤하고 행복한 9월 아동 생일 축하 파티",
+    title: "책과 함께 꿈을 키우는 독서·학습 멘토링 시간",
     date: "2026-08-28",
     category: "사회성·참여",
-    img: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=600&q=80",
-    desc: "생일을 맞은 원생들을 위해 온 식구가 둘러앉아 축하 노래를 부르고 맛있는 음식을 함께 나누었습니다."
+    img: "/images/sub/sub-community.jpg",
+    desc: "도서실에 둘러앉아 좋아하는 책을 함께 읽고 이야기를 나누며 즐겁게 지혜와 우정을 키워나갔습니다."
   },
   {
     id: 4,
-    title: "깨끗하고 아늑한 보금자리, 생활실 새 단장",
+    title: "푸른 잔디밭 위 신나는 체육 및 야외활동",
     date: "2026-08-15",
     category: "생활환경",
-    img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80",
-    desc: "아이들이 편안하게 휴식하고 꿈을 키워나갈 수 있도록 생활공간을 정비하고 친환경 가구를 교체했습니다."
+    img: "/images/sub/sub-business.jpg",
+    desc: "아이들이 드넓은 잔디밭을 마음껏 달리며 건강하고 활기찬 에너지를 발산하는 행복한 하루를 보냈습니다."
   }
 ];
 
