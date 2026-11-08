@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 한국/대구아동복지협회 상징: 미래지향적 별(Star)과 아동(Child) 품은 하트 형상 -->
+  <defs>
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#E63946"/>
+    </linearGradient>
+    <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1D4E89"/>
+      <stop offset="100%" stop-color="#00A896"/>
+    </linearGradient>
+  </defs>
+  <!-- 푸른 보호의 품(아크) -->
+  <path d="M10 38c4 12 16 19 28 17 10-1.5 17-8 19-17-6 6-15 9-25 8-10-1-17-4-22-8z" fill="url(#arcGrad)"/>
+  <!-- 희망의 별 & 아동 형상 -->
+  <circle cx="32" cy="15" r="5.5" fill="#FFB400"/>
+  <path d="M32 23l6.5 4.5 9.5-2-5.5 8 3.5 9.5-8.5-4.5L29 43l3-9.5-8-5 9.5 1z" fill="url(#starGrad)"/>
+</svg>

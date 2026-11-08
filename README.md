@@ -20,3 +20,4 @@ npm install
 npm run build
 npx firebase-tools deploy --only hosting --project yukyounghaksa-official
 ```
+

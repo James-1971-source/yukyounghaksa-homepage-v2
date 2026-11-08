@@ -1075,41 +1075,29 @@ button, input, select, textarea {
 
 /* Partner Slider Section */
 .partner-slider-section {
-  padding: 36px 0;
+  padding: 32px 0;
   border-top: 1px solid var(--border-light);
-  background: #fff;
+  border-bottom: 1px solid var(--border-light);
+  background: #ffffff;
   overflow: hidden;
-}
-
-.partner-slider-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-.partner-slider-title {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--text-dark);
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .partner-slider-wrap {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 4px 20px;
   overflow: hidden;
   position: relative;
+  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
 }
 
 .partner-track {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 18px;
   width: max-content;
-  animation: partnerScroll 32s linear infinite;
+  animation: partnerScroll 34s linear infinite;
 }
 
 .partner-track:hover {
@@ -1118,27 +1106,86 @@ button, input, select, textarea {
 
 .partner-item {
   flex: 0 0 auto;
-  min-width: 195px;
-  height: 56px;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
+  min-width: 235px;
+  height: 68px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 18px;
-  background: #fafafa;
-  font-weight: 700;
-  color: #555;
-  font-size: 0.92rem;
-  transition: all 0.3s;
-  gap: 6px;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.28s ease;
+  gap: 12px;
 }
 
 .partner-item:hover {
   border-color: var(--color-primary);
+  background: #f9fdfb;
+  box-shadow: 0 6px 18px rgba(76, 171, 110, 0.14);
+  transform: translateY(-3px);
+}
+
+.partner-logo-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.partner-logo-img {
+  max-width: 40px;
+  max-height: 40px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.partner-text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.partner-name {
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #222222;
+  line-height: 1.25;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.partner-item:hover .partner-name {
+  color: var(--color-primary-dark);
+}
+
+.partner-sub {
+  font-size: 0.74rem;
+  color: #888888;
+  font-weight: 500;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+.partner-ext-icon {
+  color: #9ca3af;
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.partner-item:hover .partner-ext-icon {
   color: var(--color-primary);
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(76, 171, 110, 0.12);
+  transform: translate(1px, -1px);
 }
 
 @keyframes partnerScroll {

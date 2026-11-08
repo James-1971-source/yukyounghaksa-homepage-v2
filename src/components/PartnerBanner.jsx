@@ -16,10 +16,23 @@ export default function PartnerBanner() {
               target="_blank"
               rel="noopener noreferrer"
               className="partner-item"
-              title={`${partner.name} (${partner.category}) 새 창 열기`}
+              title={`${partner.name} (${partner.logoText}) 새 창 열기`}
             >
-              <span>{partner.name}</span>
-              <ExternalLink size={13} style={{ opacity: 0.6 }} />
+              {partner.logo && (
+                <span className="partner-logo-box">
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} 로고`}
+                    className="partner-logo-img"
+                    loading="lazy"
+                  />
+                </span>
+              )}
+              <span className="partner-text-box">
+                <strong className="partner-name">{partner.name}</strong>
+                <small className="partner-sub">{partner.logoText}</small>
+              </span>
+              <ExternalLink size={13} className="partner-ext-icon" />
             </a>
           ))}
         </div>

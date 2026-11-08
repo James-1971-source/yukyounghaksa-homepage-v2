@@ -368,13 +368,54 @@ export const INITIAL_NEWSLETTERS = [
   }
 ];
 
-// 유관기관 링크 모음 (잉아터 하단 배너 스타일)
+// 유관기관 링크 모음 (기관 공식 심벌 로고 및 기관명 함께 표시)
 export const PARTNER_LINKS = [
-  { name: "대구광역시", url: "https://www.daegu.go.kr", logoText: "대구광역시" },
-  { name: "대구동구청", url: "https://www.dong.daegu.kr", logoText: "대구광역시 동구" },
-  { name: "아동권리보장원", url: "https://www.ncrc.or.kr", logoText: "아동권리보장원" },
-  { name: "대구아동복지협회", url: "http://www.daeguchild.org", logoText: "대구아동복지협회" },
-  { name: "자립지원전담기관", url: "https://jarip.ncrc.or.kr", logoText: "청년자립지원플랫폼" },
-  { name: "VMS 사회복지인증", url: "https://www.vms.or.kr", logoText: "사회복지자원봉사 VMS" },
-  { name: "네이버 해피빈", url: "https://happybean.naver.com", logoText: "해피빈 HAPPYBEAN" }
+  {
+    name: "대구광역시",
+    url: "https://www.daegu.go.kr",
+    logoText: "대구광역시청",
+    logo: "/images/partners/symbol_daegu.png"
+  },
+  {
+    name: "대구동구청",
+    url: "https://www.dong.daegu.kr",
+    logoText: "대구광역시 동구",
+    logo: "/images/partners/symbol_donggu.png"
+  },
+  {
+    name: "아동권리보장원",
+    url: "https://www.ncrc.or.kr",
+    logoText: "국가아동권리보장원",
+    logo: "/images/partners/symbol_ncrc.png"
+  },
+  {
+    name: "대구아동복지협회",
+    url: "http://www.daeguchild.org",
+    logoText: "아동복지시설협회",
+    logo: "/images/partners/symbol_daeguchild.svg"
+  },
+  {
+    name: "자립지원전담기관",
+    url: "https://jarip.ncrc.or.kr",
+    logoText: "대구자립통합지원센터",
+    logo: "/images/partners/symbol_jarip.png"
+  },
+  {
+    name: "VMS 사회복지인증",
+    url: "https://www.vms.or.kr",
+    logoText: "자원봉사인증관리",
+    logo: "/images/partners/symbol_vms.png"
+  },
+  {
+    name: "네이버 해피빈",
+    url: "https://happybean.naver.com",
+    logoText: "온라인 나눔포털",
+    logo: "/images/partners/symbol_happybean.svg"
+  },
+  {
+    name: "보건복지부",
+    url: "https://www.mohw.go.kr",
+    logoText: "대한민국 보건복지부",
+    logo: "/images/partners/symbol_mohw.png"
+  }
 ];
