@@ -247,14 +247,14 @@ export const INITIAL_NOTICES = [
   }
 ];
 
-// 육영학사 이야기 (갤러리/활동소식 - 한국 아동 이미지 적용)
+// 육영학사 이야기 (갤러리/활동소식 - 육영학사 전용 한국 아동 이미지 적용)
 export const INITIAL_STORIES = [
   {
     id: 1,
     title: "아이들과 함께한 가을맞이 힐링 나들이",
     date: "2026-09-18",
     category: "문화·여가",
-    img: "/images/sub/sub-supporters.jpg",
+    img: "/images/sub/story-1.jpg",
     desc: "맑고 푸른 가을 하늘 아래, 아이들과 함께 자연 속에서 웃음꽃을 피우며 소중한 추억을 만들었습니다."
   },
   {
@@ -270,7 +270,7 @@ export const INITIAL_STORIES = [
     title: "책과 함께 꿈을 키우는 독서·학습 멘토링 시간",
     date: "2026-08-28",
     category: "사회성·참여",
-    img: "/images/sub/sub-community.jpg",
+    img: "/images/sub/story-3.jpg",
     desc: "도서실에 둘러앉아 좋아하는 책을 함께 읽고 이야기를 나누며 즐겁게 지혜와 우정을 키워나갔습니다."
   },
   {
@@ -278,7 +278,7 @@ export const INITIAL_STORIES = [
     title: "푸른 잔디밭 위 신나는 체육 및 야외활동",
     date: "2026-08-15",
     category: "생활환경",
-    img: "/images/sub/sub-business.jpg",
+    img: "/images/sub/story-4.jpg",
     desc: "아이들이 드넓은 잔디밭을 마음껏 달리며 건강하고 활기찬 에너지를 발산하는 행복한 하루를 보냈습니다."
   }
 ];
