@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ORG_INFO, HISTORY_ITEMS, JOB_ROLES } from '../data/siteData';
-import { Sprout, Compass, Shield, Award, Users, CheckCircle, MapPin, Bus, Car, Phone } from 'lucide-react';
+import { Sprout, Compass, Shield, Award, Users, CheckCircle, MapPin, Bus } from 'lucide-react';
 
-// 1. 시설장 인사말
+// 1. 시설장 인사말 (요청사항 5번: 법인명을 빼고 서명에 "육영학사 시설장 이혜련"만 표기)
 export function GreetingView() {
   return (
     <div className="view-container">
@@ -33,21 +33,20 @@ export function GreetingView() {
         </p>
       </div>
 
-      <div style={{ textAlign: 'right', marginTop: 40, borderTop: '1px solid #edf1f6', paddingTop: 20 }}>
-        <span style={{ fontSize: '14px', color: '#666', marginRight: 10 }}>사회복지법인 육영복지재단 육영학사</span>
-        <span style={{ fontSize: '17px', fontWeight: 800, color: '#174e80' }}>시설장 이 혜 련</span>
+      <div style={{ textAlign: 'right', marginTop: 40, borderTop: '1px solid #e2ebe5', paddingTop: 20 }}>
+        <span style={{ fontSize: '18px', fontWeight: 800, color: '#254d38' }}>육영학사 시설장 이혜련</span>
       </div>
     </div>
   );
 }
 
-// 2. 법인 및 시설소개 (미션/비전/핵심가치 - 잉아터 스타일)
+// 2. 법인 및 시설소개 (법인명 표기가 필요한 곳에 사회복지법인 육영복지재단 명시)
 export function CorporateView() {
   return (
     <div className="view-container">
       <div className="subpage-highlight-banner">
         <p className="subpage-highlight-text">
-          “함께 살아가며, 스스로 살아갈 힘을 키우는 곳”
+          “함께 살아가며, 스스로 살아갈 힘을 키우는 곳 — 육영학사(育英學舍 : 영재를 가르치고 키우는 집)”
         </p>
       </div>
 
@@ -55,7 +54,7 @@ export function CorporateView() {
         육영학사는 <strong>사회복지법인 육영복지재단</strong>이 운영하는 아동양육시설로, 1958년 시설인가 이후 대구 지역사회와 함께 보호가 필요한 아동들의 건강한 삶과 성장을 지원해 왔습니다. 아이들에게 필요한 것은 단순히 생활할 수 있는 물리적 공간만이 아닙니다. 편안하게 하루를 보내는 일상, 마음을 터놓을 수 있는 사람, 실패해도 다시 도전할 수 있는 든든한 신뢰, 그리고 자신의 미래를 당당히 꿈꾸고 준비할 수 있는 풍성한 기회가 필요합니다.
       </p>
 
-      {/* 미션 / 비전 / 핵심가치 박스 (잉아터 레퍼런스 스타일) */}
+      {/* 미션 / 비전 / 핵심가치 박스 */}
       <div className="vision-cards-grid">
         <div className="vision-card-item">
           <div className="vision-icon-box">
@@ -114,7 +113,7 @@ export function CorporateView() {
           </tr>
           <tr>
             <th>소재지</th>
-            <td colSpan={3}>({ORG_INFO.zipcode}) {ORG_INFO.address}</td>
+            <td colSpan={3}>({ORG_INFO.zipcode}) {ORG_INFO.address} {ORG_INFO.addressDetail}</td>
           </tr>
           <tr>
             <th>대표연락처</th>
@@ -148,7 +147,7 @@ export function HistoryView() {
         <tbody>
           {HISTORY_ITEMS.map((item, idx) => (
             <tr key={idx}>
-              <td className="center" style={{ fontWeight: 700, color: '#174e80' }}>
+              <td className="center" style={{ fontWeight: 700, color: '#2d6a4f' }}>
                 {item.year}. {item.date}
               </td>
               <td style={{ fontSize: '14.5px' }}>{item.title}</td>
@@ -160,7 +159,7 @@ export function HistoryView() {
   );
 }
 
-// 4. 조직 및 직위별 업무 표
+// 4. 조직 및 업무 (요청사항 6번: 시설장 아래 아동자치회·시설운영위원회 양쪽 배치, 중앙 사무국장(자립지원전담요원)이 생활지원팀·운영지원팀 총괄)
 export function OrganizationView() {
   return (
     <div className="view-container">
@@ -170,106 +169,91 @@ export function OrganizationView() {
         </p>
       </div>
 
-      {/* 조직도 다이어그램 */}
+      {/* 조직도 다이어그램 (첨부 이미지 4번과 동일한 구조 및 햇살노랑 #FFD54F 색상 적용) */}
       <h3 className="content-section-title">
         <Users size={18} className="section-icon-sprout" /> 시설 조직체계
       </h3>
-      <div style={{
-        background: '#f6f9fc',
-        border: '1px solid #dce5ee',
-        borderRadius: '8px',
-        padding: '24px',
-        marginBottom: '28px',
-        textAlign: 'center'
-      }}>
-        {/* 원장 */}
-        <div style={{
-          display: 'inline-block',
-          background: '#1b65a5',
-          color: '#fff',
-          fontWeight: 800,
-          padding: '10px 36px',
-          borderRadius: '24px',
-          fontSize: '16px',
-          boxShadow: '0 2px 8px rgba(27,101,165,0.3)'
-        }}>
-          시설장 (원장)
+      <div className="org-chart-box">
+        {/* 1단: 시설장(원장) */}
+        <div className="org-level-center">
+          <div className="org-node org-node-primary">시설장(원장)</div>
+        </div>
+
+        {/* 2단: 좌측 아동자치회 - 중앙 수직/수평 교차선 - 우측 시설운영위원회 */}
+        <div className="org-middle-branch">
+          <div className="org-node org-node-sub">아동자치회</div>
+          <div className="org-cross-lines" aria-hidden="true">
+            <div className="org-v-line"></div>
+            <div className="org-h-line"></div>
+          </div>
+          <div className="org-node org-node-sub">시설운영위원회</div>
+        </div>
+
+        {/* 3단: 중앙 사무국장(자립지원전담요원) */}
+        <div className="org-level-center">
+          <div className="org-node org-node-primary org-node-wide">
+            사무국장(자립지원전담요원)
+          </div>
         </div>
 
         {/* 연결선 */}
-        <div style={{ width: 2, height: 24, background: '#a5c0d8', margin: '0 auto' }}></div>
-        <div style={{ width: '60%', height: 2, background: '#a5c0d8', margin: '0 auto' }}></div>
+        <div className="org-bottom-connector" aria-hidden="true">
+          <div className="org-v-stem"></div>
+          <div className="org-h-bar"></div>
+        </div>
 
-        {/* 팀 그리드 */}
-        <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: 14, gap: 20 }}>
-          {/* 생활지원팀 */}
-          <div style={{
-            flex: 1,
-            background: '#ffffff',
-            border: '1px solid #cce0f0',
-            borderRadius: '8px',
-            padding: '16px'
-          }}>
-            <div style={{ fontWeight: 800, color: '#174e80', fontSize: '15px', marginBottom: 8 }}>
-              생활지원팀
-            </div>
-            <div style={{ fontSize: '13.5px', color: '#555' }}>
-              선임생활지도원 · 생활지도원
-            </div>
+        {/* 4단: 생활지원팀 / 운영지원팀 */}
+        <div className="org-bottom-teams">
+          <div className="org-team-col">
+            <div className="org-node org-node-sub org-node-team">생활지원팀</div>
+            <div className="org-team-members">선임생활지도원 · 생활지도원</div>
           </div>
-
-          {/* 운영지원팀 */}
-          <div style={{
-            flex: 1,
-            background: '#ffffff',
-            border: '1px solid #c8e4ba',
-            borderRadius: '8px',
-            padding: '16px'
-          }}>
-            <div style={{ fontWeight: 800, color: '#2b6f0f', fontSize: '15px', marginBottom: 8 }}>
-              운영지원팀
-            </div>
-            <div style={{ fontSize: '13.5px', color: '#555' }}>
-              자립지원전담요원(사무국장 대행) · 사무원 · 조리원 · 운전원
-            </div>
+          <div className="org-team-col">
+            <div className="org-node org-node-sub org-node-team">운영지원팀</div>
+            <div className="org-team-members">사무원 · 조리원 · 운전원</div>
           </div>
         </div>
       </div>
 
-      {/* 직위별 주요업무 표 (HWPX 15번 전문) */}
+      {/* 직위별 주요업무 표 */}
       <h3 className="content-section-title">
         <CheckCircle size={18} className="section-icon-sprout" /> 직위별 주요 업무 안내
       </h3>
       <table className="custom-info-table">
         <thead>
           <tr>
-            <th style={{ width: '28%' }}>직위</th>
+            <th style={{ width: '28%' }}>직책</th>
             <th>주요 담당 업무</th>
           </tr>
         </thead>
         <tbody>
           {JOB_ROLES.map((role, idx) => (
             <tr key={idx}>
-              <td style={{ fontWeight: 700, color: '#222' }}>{role.role}</td>
-              <td style={{ fontSize: '13.5px', lineHeight: 1.6 }}>{role.task}</td>
+              <td className="center" style={{ fontWeight: 700, color: '#222' }}>{role.role}</td>
+              <td style={{ fontSize: '14px', lineHeight: 1.65 }}>{role.task}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p style={{ fontSize: '12.5px', color: '#888', marginTop: -14 }}>
-        * 개인정보 보호와 원활한 시설 운영을 위해 개별 직원의 성명은 공개하지 않고 직위 및 업무 중심으로 안내하고 있습니다.
+      <p style={{ fontSize: '12.5px', color: '#888', marginTop: -12 }}>
+        * 개인정보 보호와 원활한 시설 운영을 위해 개별 직원의 성명은 공개하지 않고 직책 및 업무 중심으로 안내하고 있습니다.
       </p>
     </div>
   );
 }
 
-// 5. 시설현황 및 전경 (잉아터 '내부전경' 스타일 갤러리 뷰어)
+// 5. 시설현황 및 전경
 export function FacilityView() {
   const facilityPhotos = [
     {
       title: "건물 외관 전경",
       desc: "아이들이 안전하고 쾌적하게 생활할 수 있는 남·여 아동 생활관 및 본관 전경",
-      img: "https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=1000&q=80"
+      img: "/images/sub/src_building.jpg"
+    },
+    {
+      title: "야외 잔디마당 및 놀이공간",
+      desc: "아이들이 마음껏 뛰어놀고 자연과 함께 숨 쉬는 넓은 잔디마당",
+      img: "/images/sub/src_playground.jpg"
     },
     {
       title: "아동 생활실",
@@ -282,14 +266,9 @@ export function FacilityView() {
       img: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80"
     },
     {
-      title: "다목적 프로그램실 및 강당",
-      desc: "아동자치회, 생일파티, 특기적성 교육 및 문화행사를 진행하는 열린 공간",
-      img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1000&q=80"
-    },
-    {
-      title: "심리상담실 및 치료실",
-      desc: "아이들의 정서적 안정과 마음 치유를 돕는 전문 심리검사 및 모래놀이 치료실",
-      img: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=1000&q=80"
+      title: "도서 및 학습 멘토링실",
+      desc: "아이들이 책을 읽고 멘토 선생님과 함께 학습하며 꿈을 키우는 공간",
+      img: "/images/sub/story-3.jpg"
     },
     {
       title: "자립체험관",
@@ -326,11 +305,11 @@ export function FacilityView() {
         </tbody>
       </table>
 
-      {/* 잉아터 스타일 내부전경 갤러리 뷰어 */}
+      {/* 내부전경 갤러리 뷰어 */}
       <h3 className="content-section-title">
         <Sprout size={18} className="section-icon-sprout" /> 시설 전경 및 주요 공간 안내
       </h3>
-      
+
       <div className="facility-gallery-wrapper">
         <div style={{ textAlign: 'center', fontSize: '18px', fontWeight: 800, color: '#333', marginBottom: 12 }}>
           [ {facilityPhotos[activeIndex].title} ]
@@ -376,31 +355,31 @@ export function LocationView() {
 
       {/* 주소 안내 박스 */}
       <div style={{
-        background: '#f8fafc',
-        border: '1px solid #dbe3eb',
-        borderRadius: '8px',
+        background: '#f8fbf9',
+        border: '1px solid #d5e5db',
+        borderRadius: '10px',
         padding: '22px',
         marginBottom: '26px'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: '17px', fontWeight: 800, color: '#174e80', marginBottom: 8 }}>
-          <MapPin size={22} color="#d9381e" /> ({ORG_INFO.zipcode}) {ORG_INFO.address}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: '17px', fontWeight: 800, color: '#254d38', marginBottom: 8 }}>
+          <MapPin size={22} color="#3b8f5a" /> ({ORG_INFO.zipcode}) {ORG_INFO.address}
         </div>
         <div style={{ fontSize: '14px', color: '#666', paddingLeft: 32 }}>
           지번 주소: 대구광역시 동구 신평동 11-1
         </div>
-        <div style={{ display: 'flex', gap: 20, marginTop: 14, paddingLeft: 32, fontSize: '14px', color: '#444' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginTop: 14, paddingLeft: 32, fontSize: '14px', color: '#444' }}>
           <div><strong>대표전화:</strong> {ORG_INFO.tel}</div>
           <div><strong>팩스번호:</strong> {ORG_INFO.fax}</div>
           <div><strong>이메일:</strong> {ORG_INFO.email}</div>
         </div>
       </div>
 
-      {/* 가상 지도 영역 */}
+      {/* 지도 영역 */}
       <div style={{
-        height: 320,
-        background: '#e9eff5',
-        borderRadius: '8px',
-        border: '1px solid #ccd7e2',
+        height: 340,
+        background: '#eef4f0',
+        borderRadius: '10px',
+        border: '1px solid #d5e5db',
         position: 'relative',
         overflow: 'hidden',
         display: 'flex',
@@ -421,7 +400,7 @@ export function LocationView() {
 
       {/* 교통편 안내 */}
       <h3 className="content-section-title">
-        <Bus size={18} className="section-icon-sprout" /> 대중교통 이용 안내
+        <Bus size={18} className="section-icon-sprout" /> 대중교통 및 자가용 이용 안내
       </h3>
       <table className="custom-info-table">
         <tbody>

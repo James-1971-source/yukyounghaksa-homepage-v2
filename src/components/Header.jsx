@@ -7,8 +7,10 @@ export default function Header({ currentRoute, onNavigate }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMobileCat, setOpenMobileCat] = useState(currentRoute?.menuId || 'about');
 
+  const isHome = !currentRoute?.menuId || currentRoute.menuId === 'home';
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -18,11 +20,17 @@ export default function Header({ currentRoute, onNavigate }) {
     setMobileOpen(false);
   };
 
+  // 대구아동복지센터 참고화면처럼 메인 상단에서는 배너 사진 위로 투명 헤더가 겹쳐지도록 처리
+  const isOverlayHeader = isHome && !scrolled && !mobileOpen;
+
   return (
     <>
-      <header id="header" className={scrolled ? 'scrolled' : ''}>
+      <header
+        id="header"
+        className={`${scrolled ? 'scrolled' : ''} ${isOverlayHeader ? 'header-overlay' : ''}`}
+      >
         <div id="headerInner">
-          {/* Shinsengwon Style 2x2 Green Grid Logo for Yukyounghaksa */}
+          {/* 로고에는 "육영학사"만 표기 (요청사항 1번 반영) */}
           <div className="logo-wrap" onClick={() => handleNav('home', '')} role="button" tabIndex={0}>
             <div className="logo-grid-symbol" aria-hidden="true">
               <span className="logo-cell c1">육</span>
@@ -31,7 +39,6 @@ export default function Header({ currentRoute, onNavigate }) {
               <span className="logo-cell c4">사</span>
             </div>
             <div className="logo-text-group">
-              <span className="logo-sub">{ORG_INFO.corporateName}</span>
               <span className="logo-main">{ORG_INFO.name}</span>
             </div>
           </div>
@@ -75,7 +82,7 @@ export default function Header({ currentRoute, onNavigate }) {
               className="btn-donate"
               onClick={() => handleNav('support', 'donation-apply')}
             >
-              <Heart size={15} fill="#fff" /> 후원하기
+              <Heart size={15} fill="currentColor" /> 후원하기
             </button>
             <button
               type="button"
@@ -91,13 +98,10 @@ export default function Header({ currentRoute, onNavigate }) {
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (모바일 삼선 메뉴) */}
       {mobileOpen && <div className="gnb-m-overlay" onClick={() => setMobileOpen(false)} />}
       <div id="gnbM" className={mobileOpen ? 'open' : ''}>
         <div style={{ marginBottom: '16px', paddingBottom: '14px', borderBottom: '2px solid var(--color-primary)' }}>
-          <div style={{ fontSize: '0.8rem', color: 'var(--color-primary-dark)', fontWeight: 700 }}>
-            {ORG_INFO.corporateName}
-          </div>
           <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-dark)' }}>
             {ORG_INFO.name} 메뉴 안내
           </div>
@@ -142,25 +146,26 @@ export default function Header({ currentRoute, onNavigate }) {
             style={{ width: '100%', justifyContent: 'center', padding: '12px' }}
             onClick={() => handleNav('support', 'donation-apply')}
           >
-            <Heart size={16} fill="#fff" /> 온라인 후원신청 바로가기
+            <Heart size={16} fill="currentColor" /> 온라인 후원신청 바로가기
           </button>
-          <a
-            href={ORG_INFO.happybeanUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
             style={{
-              display: 'block',
+              width: '100%',
               textAlign: 'center',
               padding: '11px',
               borderRadius: '50px',
-              background: 'var(--color-primary-soft)',
-              color: 'var(--color-primary-dark)',
+              background: '#fff8db',
+              border: '1px solid #ffd54f',
+              color: '#333',
               fontWeight: 700,
-              fontSize: '0.9rem'
+              fontSize: '0.9rem',
+              cursor: 'pointer'
             }}
+            onClick={() => handleNav('support', 'designated-deposit')}
           >
-            네이버 해피빈 모금함 바로가기 ↗
-          </a>
+            지정기탁서 작성·안내 바로가기
+          </button>
         </div>
       </div>
     </>

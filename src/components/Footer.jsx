@@ -1,16 +1,8 @@
 import React from 'react';
-import { ORG_INFO, PARTNER_LINKS } from '../data/siteData';
+import { ORG_INFO } from '../data/siteData';
 import { Lock, ArrowUp, MessageCircle } from 'lucide-react';
 
 export default function Footer({ onNavigate, onOpenAdmin }) {
-  const handleFamilySite = (e) => {
-    const url = e.target.value;
-    if (url) {
-      window.open(url, '_blank', 'noopener,noreferrer');
-      e.target.value = '';
-    }
-  };
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -21,7 +13,7 @@ export default function Footer({ onNavigate, onOpenAdmin }) {
         <div className="inner">
           <div className="footer-top">
             <div className="footer-logo-info">
-              {/* Shinsengwon 2x2 Green Grid Logo in Footer */}
+              {/* 요청사항 1번: 로고에는 "육영학사"만 표기 */}
               <div className="logo-wrap" onClick={() => onNavigate('home', '')}>
                 <div className="logo-grid-symbol" aria-hidden="true">
                   <span className="logo-cell c1">육</span>
@@ -30,14 +22,13 @@ export default function Footer({ onNavigate, onOpenAdmin }) {
                   <span className="logo-cell c4">사</span>
                 </div>
                 <div className="logo-text-group">
-                  <span className="logo-sub" style={{ color: '#7fd19e' }}>{ORG_INFO.corporateName}</span>
                   <span className="logo-main" style={{ color: '#ffffff' }}>{ORG_INFO.name}</span>
                 </div>
               </div>
 
               <div className="footer-info">
                 <p>
-                  <strong>{ORG_INFO.corporateName} {ORG_INFO.name}</strong> | 시설장 : {ORG_INFO.director} | 고유번호 : {ORG_INFO.businessNumber}
+                  <strong>{ORG_INFO.name}</strong> | 시설장 : {ORG_INFO.director} | 고유번호 : {ORG_INFO.businessNumber}
                 </p>
                 <p>
                   주소 : ({ORG_INFO.zipcode}) {ORG_INFO.address} {ORG_INFO.addressDetail}
@@ -45,26 +36,15 @@ export default function Footer({ onNavigate, onOpenAdmin }) {
                 <p>
                   대표전화 : <strong>{ORG_INFO.tel}</strong> | 팩스 : {ORG_INFO.fax} | 이메일 : {ORG_INFO.email}
                 </p>
-                <p style={{ color: '#7fd19e' }}>
+                <p style={{ color: '#FFD54F' }}>
                   후원계좌 : {ORG_INFO.bank.name} {ORG_INFO.bank.account} (예금주: {ORG_INFO.bank.holder})
                 </p>
               </div>
             </div>
-
-            <div className="footer-family">
-              <select onChange={handleFamilySite} defaultValue="" aria-label="유관기관 사이트 바로가기">
-                <option value="" disabled>유관기관 사이트 바로가기</option>
-                {PARTNER_LINKS.map((link, idx) => (
-                  <option key={idx} value={link.url}>
-                    {link.name} ({link.logoText})
-                  </option>
-                ))}
-              </select>
-            </div>
           </div>
 
           <div className="footer-bottom">
-            <p>Copyright © {new Date().getFullYear()} {ORG_INFO.corporateName} {ORG_INFO.name}. All Rights Reserved.</p>
+            <p>Copyright © {new Date().getFullYear()} {ORG_INFO.name}. All Rights Reserved.</p>
             <div className="footer-links">
               <button
                 type="button"
@@ -85,9 +65,12 @@ export default function Footer({ onNavigate, onOpenAdmin }) {
               >
                 후원계좌 안내
               </button>
-              <a href={ORG_INFO.happybeanUrl} target="_blank" rel="noopener noreferrer">
-                네이버 해피빈
-              </a>
+              <button
+                type="button"
+                onClick={() => onNavigate('support', 'designated-deposit')}
+              >
+                지정기탁서
+              </button>
               <button
                 type="button"
                 onClick={onOpenAdmin}

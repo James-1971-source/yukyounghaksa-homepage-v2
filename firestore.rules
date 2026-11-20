@@ -7,7 +7,19 @@ service cloud.firestore {
     match /stories/{docId} {
       allow read, write: if true;
     }
+    match /stories_v2/{docId} {
+      allow read, write: if true;
+    }
+    match /stories_v3/{docId} {
+      allow read, write: if true;
+    }
+    match /independence_info/{docId} {
+      allow read, write: if true;
+    }
     match /donations/{docId} {
+      allow read, write: if true;
+    }
+    match /designated_deposits/{docId} {
       allow read, write: if true;
     }
     match /volunteers/{docId} {
@@ -15,4 +27,3 @@ service cloud.firestore {
     }
   }
 }
-

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { INITIAL_NEWSLETTERS } from '../data/siteData';
-import { Download, Eye, Calendar, User, BookOpen, ShieldCheck } from 'lucide-react';
+import { BookOpen, ShieldCheck } from 'lucide-react';
 
 // 1. 공지사항
 export function NoticeListView({ notices, selectedNotice, onSelectNotice, onBackToList }) {
@@ -8,8 +8,8 @@ export function NoticeListView({ notices, selectedNotice, onSelectNotice, onBack
     return (
       <div className="view-container">
         <div style={{
-          borderTop: '2px solid #1b65a5',
-          borderBottom: '1px solid #dce4eb',
+          borderTop: '2px solid #3b8f5a',
+          borderBottom: '1px solid #d5e5db',
           padding: '20px 0',
           marginBottom: '24px'
         }}>
@@ -23,11 +23,11 @@ export function NoticeListView({ notices, selectedNotice, onSelectNotice, onBack
           </div>
         </div>
 
-        <div style={{ fontSize: '15px', color: '#333', lineHeight: 1.85, minHeight: '180px', padding: '10px 0' }}>
+        <div style={{ fontSize: '15px', color: '#333', lineHeight: 1.85, minHeight: '180px', padding: '10px 0', whiteSpace: 'pre-line' }}>
           {selectedNotice.content}
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 30, borderTop: '1px solid #edf1f6', paddingTop: 20 }}>
+        <div style={{ textAlign: 'center', marginTop: 30, borderTop: '1px solid #edf2ef', paddingTop: 20 }}>
           <button
             type="button"
             onClick={onBackToList}
@@ -78,7 +78,7 @@ export function NoticeListView({ notices, selectedNotice, onSelectNotice, onBack
   );
 }
 
-// 2. 육영 소식지 (HWPX 추가의견 4번: 이전 소식지 아카이브 기능)
+// 2. 육영 소식지
 export function NewsletterView() {
   return (
     <div className="view-container">
@@ -99,15 +99,15 @@ export function NewsletterView() {
             key={item.id}
             style={{
               background: '#ffffff',
-              border: '1px solid #dce4eb',
-              borderRadius: '8px',
+              border: '1px solid #d5e5db',
+              borderRadius: '10px',
               overflow: 'hidden',
               boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
               display: 'flex',
               flexDirection: 'column'
             }}
           >
-            <div style={{ height: '220px', overflow: 'hidden', background: '#edf2f7' }}>
+            <div style={{ height: '220px', overflow: 'hidden', background: '#eef4f0' }}>
               <img
                 src={item.coverImg}
                 alt={item.title}
@@ -116,7 +116,7 @@ export function NewsletterView() {
             </div>
             <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <span style={{ fontSize: '11.5px', color: '#1b65a5', fontWeight: 800, background: '#eef6fc', padding: '2px 8px', borderRadius: '4px' }}>
+                <span style={{ fontSize: '11.5px', color: '#254d38', fontWeight: 800, background: '#eaf5ee', padding: '3px 8px', borderRadius: '4px' }}>
                   {item.issueNumber}
                 </span>
                 <h4 style={{ fontSize: '15px', fontWeight: 700, margin: '8px 0 4px 0', color: '#222' }}>
@@ -128,20 +128,21 @@ export function NewsletterView() {
               <div style={{ marginTop: 14 }}>
                 <button
                   type="button"
-                  onClick={() => alert(`[${item.title}] PDF 소식지 다운로드 준비 중입니다.`)}
+                  onClick={() => alert(`[${item.title}] 게시용 PDF 소식지 파일이 전달되는 대로 연결됩니다.`)}
                   style={{
                     width: '100%',
-                    padding: '8px 0',
-                    borderRadius: '4px',
-                    border: '1px solid #1b65a5',
-                    color: '#1b65a5',
+                    padding: '9px 0',
+                    borderRadius: '6px',
+                    border: '1px solid #3b8f5a',
+                    color: '#254d38',
                     fontSize: '13px',
                     fontWeight: 700,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: 6,
-                    background: '#f7fbfe'
+                    background: '#f4faf6',
+                    cursor: 'pointer'
                   }}
                 >
                   <BookOpen size={14} /> 소식지 열람 (PDF)
@@ -155,13 +156,13 @@ export function NewsletterView() {
   );
 }
 
-// 3. 육영학사 이야기 (갤러리 - 아동 인권보호 기준 준수)
+// 3. 육영학사 이야기 (갤러리 - 메인 화면과 자동 연동)
 export function StoryGalleryView({ stories, selectedStory, onSelectStory, onBackToList }) {
   if (selectedStory) {
     return (
       <div className="view-container">
-        <div style={{ borderTop: '2px solid #59a62a', borderBottom: '1px solid #dce4eb', padding: '20px 0', marginBottom: '24px' }}>
-          <div style={{ fontSize: '12px', color: '#59a62a', fontWeight: 800, marginBottom: 4 }}>
+        <div style={{ borderTop: '2px solid #4cab6e', borderBottom: '1px solid #d5e5db', padding: '20px 0', marginBottom: '24px' }}>
+          <div style={{ fontSize: '12px', color: '#3b8f5a', fontWeight: 800, marginBottom: 4 }}>
             [{selectedStory.category}]
           </div>
           <h2 style={{ fontSize: '20px', fontWeight: 800, color: '#111', marginBottom: 8 }}>
@@ -172,17 +173,17 @@ export function StoryGalleryView({ stories, selectedStory, onSelectStory, onBack
 
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
           <img
-            src={selectedStory.img}
+            src={selectedStory.img || selectedStory.image}
             alt={selectedStory.title}
-            style={{ maxWidth: '100%', maxHeight: '450px', borderRadius: '8px', objectFit: 'cover' }}
+            style={{ maxWidth: '100%', maxHeight: '450px', borderRadius: '10px', objectFit: 'cover' }}
           />
         </div>
 
-        <p style={{ fontSize: '15px', color: '#333', lineHeight: 1.8 }}>
-          {selectedStory.desc}
+        <p style={{ fontSize: '15px', color: '#333', lineHeight: 1.85, whiteSpace: 'pre-line' }}>
+          {selectedStory.desc || selectedStory.excerpt}
         </p>
 
-        <div style={{ textAlign: 'center', marginTop: 30, borderTop: '1px solid #edf1f6', paddingTop: 20 }}>
+        <div style={{ textAlign: 'center', marginTop: 30, borderTop: '1px solid #edf2ef', paddingTop: 20 }}>
           <button type="button" onClick={onBackToList} className="btn-secondary-action">
             목록으로 돌아가기
           </button>
@@ -195,7 +196,7 @@ export function StoryGalleryView({ stories, selectedStory, onSelectStory, onBack
     <div className="view-container">
       <div className="subpage-highlight-banner">
         <p className="subpage-highlight-text">
-          아이들의 일상과 다양한 활동 소식을 전해드립니다. (아동 인권 및 개인정보 보호 지침을 준수합니다)
+          아이들의 일상과 다양한 활동 소식을 전해드립니다. 이곳에 등록된 소식은 메인 화면 ‘육영학사 이야기’에도 자동으로 함께 표시됩니다.
         </p>
       </div>
 
@@ -211,30 +212,30 @@ export function StoryGalleryView({ stories, selectedStory, onSelectStory, onBack
             onClick={() => onSelectStory(s)}
             style={{
               background: '#ffffff',
-              border: '1px solid #dce4eb',
-              borderRadius: '8px',
+              border: '1px solid #d5e5db',
+              borderRadius: '10px',
               overflow: 'hidden',
               cursor: 'pointer',
               boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
               transition: 'transform 0.2s'
             }}
           >
-            <div style={{ height: '180px', overflow: 'hidden' }}>
+            <div style={{ height: '185px', overflow: 'hidden' }}>
               <img
-                src={s.img}
+                src={s.img || s.image}
                 alt={s.title}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s' }}
               />
             </div>
-            <div style={{ padding: '16px' }}>
-              <span style={{ fontSize: '11.5px', color: '#59a62a', fontWeight: 800 }}>
+            <div style={{ padding: '18px' }}>
+              <span style={{ fontSize: '12px', color: '#3b8f5a', fontWeight: 800 }}>
                 {s.category}
               </span>
               <h4 style={{ fontSize: '15.5px', fontWeight: 700, margin: '6px 0', color: '#222' }}>
                 {s.title}
               </h4>
-              <p style={{ fontSize: '13px', color: '#666', lineHeight: 1.5, maxHeight: '38px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                {s.desc}
+              <p style={{ fontSize: '13.5px', color: '#666', lineHeight: 1.55, maxHeight: '42px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {s.desc || s.excerpt}
               </p>
               <div style={{ fontSize: '12px', color: '#999', marginTop: 10 }}>{s.date}</div>
             </div>
@@ -245,7 +246,7 @@ export function StoryGalleryView({ stories, selectedStory, onSelectStory, onBack
   );
 }
 
-// 4. 개인정보처리방침 및 아동정보보호기준 (HWPX 21, 22, 23, 24번 100% 반영)
+// 4. 개인정보처리방침 및 아동정보보호기준
 export function PrivacyPolicyView() {
   return (
     <div className="view-container">
@@ -257,7 +258,7 @@ export function PrivacyPolicyView() {
 
       <div style={{ fontSize: '14.5px', color: '#444', lineHeight: 1.85 }}>
         <h3 className="content-section-title">
-          <ShieldCheck size={18} className="section-icon-sprout" /> 1. 아동 인권 및 개인정보·초상권 보호 원칙 (문서 기준)
+          <ShieldCheck size={18} className="section-icon-sprout" /> 1. 아동 인권 및 개인정보·초상권 보호 원칙
         </h3>
         <p style={{ marginBottom: 12 }}>
           육영학사는 아동복지시설로서 시설 아동의 사생활 보호와 권리 증진을 최우선으로 합니다.
@@ -275,8 +276,8 @@ export function PrivacyPolicyView() {
           사회복지법인 육영복지재단 육영학사는 개인정보 보호법 제30조에 따라 정보주체의 개인정보를 보호하고 관련 고충을 신속하게 처리하기 위하여 다음과 같이 개인정보처리방침을 수립·공개합니다.
         </p>
         <ul style={{ paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <li><strong>개인정보 수집 항목:</strong> 온라인 후원 및 자원봉사 신청 시 성명, 연락처, 이메일, 주소, VMS 아이디 등 최소한의 필수 정보.</li>
-          <li><strong>처리 목적:</strong> 후원금·물품 관리, 기부금영수증 발급, 자원봉사 일정 조율 및 VMS 실적 등록.</li>
+          <li><strong>개인정보 수집 항목:</strong> 온라인 후원·지정기탁 및 자원봉사 신청 시 성명, 연락처, 이메일, 주소, VMS 아이디 등 필요한 정보.</li>
+          <li><strong>처리 목적:</strong> 후원금·물품 관리, 지정기탁 집행·관리, 기부금영수증 발급, 자원봉사 일정 조율 및 VMS 실적 등록.</li>
           <li><strong>보유 및 이용 기간:</strong> 관계 법령에 따른 법정 보존 기간(5년) 동안 안전하게 보관 후 파기합니다.</li>
           <li><strong>개인정보 보호책임자:</strong> 육영학사 시설장 이혜련 (문의: 053-986-1009)</li>
         </ul>

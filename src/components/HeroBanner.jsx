@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Building2,
-  ClipboardCheck,
-  Sparkles,
-  HeartHandshake,
+  DoorOpen,
+  LayoutGrid,
+  Heart,
   Users,
-  Compass,
+  FileSignature,
+  BookOpen,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';
@@ -13,49 +13,42 @@ import {
 const SLIDES = [
   {
     id: 1,
-    badge: '사회복지법인 육영복지재단 육영학사',
-    titleMain: '함께 살아가며,',
-    titleHighlight: '스스로 살아갈 힘',
-    titleTail: '을 키우는 곳',
+    titleLine1: '함께 살아가며,',
+    titleLine2: '스스로 살아갈 힘을 키우는 곳',
+    hanjaTitle: '육영학사  育英學舍',
+    meaningText: '영재를 가르치고 키우는 집',
     desc: '아이들의 오늘을 따뜻하게 지켜주고, 내일을 스스로 준비할 수 있도록 함께 걸어가는 아동양육시설 육영학사입니다.',
-    eng: 'Warm Care, Healthy Growth, Hopeful Tomorrow',
-    bgImage: '/images/hero/hero-1.jpg',
-    primaryAction: { label: '시설장 인사말', cat: 'about', sub: 'greeting' },
-    secondaryAction: { label: '온라인 후원신청', cat: 'support', sub: 'donation-apply' }
+    bgImage: '/images/hero/hero-1.jpg'
   },
   {
     id: 2,
-    badge: '10대 전문 지원사업 & 특성화 프로그램',
-    titleMain: '아이들의 꿈과 재능을 키우는',
-    titleHighlight: '특성화 자립지원 「꿈JOB끼」',
-    titleTail: '',
-    desc: '일상생활·치료·학습·문화·진로탐색부터 퇴소 후 사후관리까지 아동 개개인의 눈높이에 맞춘 통합 양육 서비스를 제공합니다.',
-    eng: 'Customized Growth & Self-Reliance Program',
-    bgImage: '/images/hero/hero-2.jpg',
-    primaryAction: { label: '프로그램 안내', cat: 'program', sub: 'overview' },
-    secondaryAction: { label: '자립정보센터', cat: 'independence', sub: 'info-list' }
+    titleLine1: '함께 살아가며,',
+    titleLine2: '스스로 살아갈 힘을 키우는 곳',
+    hanjaTitle: '육영학사  育英學舍',
+    meaningText: '영재를 가르치고 키우는 집',
+    desc: '아이들의 이야기를 귀 기울여 듣고, 성장 단계에 맞춰 진로를 탐색하며 스스로 생활할 힘을 기를 수 있도록 돕습니다.',
+    bgImage: '/images/hero/hero-2.jpg'
   },
   {
     id: 3,
-    badge: '따뜻한 동행 · 나눔과 섬김',
-    titleMain: '작은 나눔이 모여 아이들의',
-    titleHighlight: '든든한 내일과 희망',
-    titleTail: '이 됩니다',
-    desc: '후원자분들과 자원봉사자분들의 따뜻한 관심과 사랑은 육영학사 아동들이 건강한 사회 구성원으로 성장하는 가장 큰 힘입니다.',
-    eng: 'Sharing Love & Building Hope Together',
-    bgImage: '/images/hero/hero-3.jpg',
-    primaryAction: { label: '후원안내 보기', cat: 'support', sub: 'donation' },
-    secondaryAction: { label: '자원봉사 신청', cat: 'support', sub: 'volunteer-apply' }
+    titleLine1: '함께 살아가며,',
+    titleLine2: '스스로 살아갈 힘을 키우는 곳',
+    hanjaTitle: '육영학사  育英學舍',
+    meaningText: '영재를 가르치고 키우는 집',
+    desc: '후원자분들과 자원봉사자분들의 따뜻한 관심과 참여는 아이들이 건강한 사회 구성원으로 자라나는 든든한 힘이 됩니다.',
+    bgImage: '/images/hero/hero-3.jpg'
   }
 ];
 
+// 요청사항 2번: 입소안내, 프로그램, 후원신청, 자원봉사 신청, 지정기탁서, 소식지 바로가기 6종
+// ("입소안내" 바로가기는 상단 "입퇴소안내"의 "입소대상 및 절차"로 연결)
 const QUICK_MENU_ITEMS = [
-  { label: '학사소개', sub: '연혁·조직·오시는길', icon: Building2, cat: 'about', page: 'corporate' },
-  { label: '입소안내', sub: '대상 및 입소절차', icon: ClipboardCheck, cat: 'admission', page: 'target' },
-  { label: '꿈JOB끼 프로그램', sub: '10대 영역·특성화', icon: Sparkles, cat: 'program', page: 'independence-program' },
-  { label: '온라인 후원신청', sub: '정기·일시·지정기탁', icon: HeartHandshake, cat: 'support', page: 'donation-apply' },
-  { label: '자원봉사 신청', sub: 'VMS 연계 봉사활동', icon: Users, cat: 'support', page: 'volunteer-apply' },
-  { label: '자립정보센터', sub: '주거·금융·전담기관', icon: Compass, cat: 'independence', page: 'info-list' }
+  { label: '입소안내', icon: DoorOpen, cat: 'admission', page: 'target' },
+  { label: '프로그램', icon: LayoutGrid, cat: 'program', page: 'overview' },
+  { label: '후원신청', icon: Heart, cat: 'support', page: 'donation-apply' },
+  { label: '자원봉사 신청', icon: Users, cat: 'support', page: 'volunteer-apply' },
+  { label: '지정기탁서', icon: FileSignature, cat: 'support', page: 'designated-deposit' },
+  { label: '소식지', icon: BookOpen, cat: 'community', page: 'newsletter' }
 ];
 
 export default function HeroBanner({ onNavigate }) {
@@ -73,7 +66,7 @@ export default function HeroBanner({ onNavigate }) {
 
   return (
     <>
-      {/* Shinsengwon Full-Width Hero Visual */}
+      {/* 대구아동복지센터 PC/모바일 참고화면처럼 상단 메뉴 뒤까지 배너 사진이 넓게 이어지는 히어로 배너 */}
       <section id="mainVisual" aria-label="메인 비주얼 배너">
         <div className="visual-slider">
           {SLIDES.map((s, idx) => (
@@ -83,41 +76,26 @@ export default function HeroBanner({ onNavigate }) {
               style={{ backgroundImage: `url('${s.bgImage}')` }}
             >
               <div className="vis-txt">
-                <span className="vis-badge">{s.badge}</span>
                 <h2>
-                  {s.titleMain}
+                  {s.titleLine1}
                   <br />
-                  <span>{s.titleHighlight}</span>
-                  {s.titleTail}
+                  {s.titleLine2}
                 </h2>
-                <p className="vis-desc">{s.desc}</p>
-                <p className="eng">{s.eng}</p>
-                <div className="vis-btns">
-                  <button
-                    type="button"
-                    className="vis-btn-primary"
-                    onClick={() => onNavigate(s.primaryAction.cat, s.primaryAction.sub)}
-                  >
-                    {s.primaryAction.label} →
-                  </button>
-                  <button
-                    type="button"
-                    className="vis-btn-outline"
-                    onClick={() => onNavigate(s.secondaryAction.cat, s.secondaryAction.sub)}
-                  >
-                    {s.secondaryAction.label}
-                  </button>
+                <div className="vis-hanja-block">
+                  <div className="vis-hanja-title">{s.hanjaTitle}</div>
+                  <div className="vis-hanja-meaning">{s.meaningText}</div>
                 </div>
+                <p className="vis-desc">{s.desc}</p>
               </div>
             </div>
           ))}
         </div>
 
         <button type="button" className="slider-arrow prev" onClick={prevSlide} aria-label="이전 슬라이드">
-          <ChevronLeft size={24} />
+          <ChevronLeft size={26} />
         </button>
         <button type="button" className="slider-arrow next" onClick={nextSlide} aria-label="다음 슬라이드">
-          <ChevronRight size={24} />
+          <ChevronRight size={26} />
         </button>
 
         <div className="slider-controls">
@@ -133,7 +111,7 @@ export default function HeroBanner({ onNavigate }) {
         </div>
       </section>
 
-      {/* Shinsengwon Floating Quick Icon Menu Bar */}
+      {/* 메인 배너 아래 6개 아이콘 바로가기 (요청사항 2번 & 배치 예시 반영) */}
       <div className="quick-menu">
         <div className="inner">
           <div className="quick-list">
@@ -147,10 +125,9 @@ export default function HeroBanner({ onNavigate }) {
                   onClick={() => onNavigate(item.cat, item.page)}
                 >
                   <div className="quick-icon">
-                    <IconComp size={26} />
+                    <IconComp size={24} />
                   </div>
                   <span>{item.label}</span>
-                  <small>{item.sub}</small>
                 </button>
               );
             })}
@@ -160,4 +137,3 @@ export default function HeroBanner({ onNavigate }) {
     </>
   );
 }
-

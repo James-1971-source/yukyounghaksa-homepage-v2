@@ -1,173 +1,223 @@
 import React from 'react';
 import { ORG_INFO } from '../data/siteData';
-import { ShieldAlert, ArrowRight, CheckCircle2, PhoneCall, HelpCircle, FileCheck } from 'lucide-react';
+import { FileCheck, PhoneCall, HelpCircle, Home, Compass, ArrowRight } from 'lucide-react';
 
-// 1. 입소대상 및 절차
+// 1. 입소대상 및 절차 (요청사항 28-33번: 입소상담 안내를 입소대상 및 절차에 통합 + 공식 게시 문안 반영)
 export function AdmissionTargetView() {
+  const admissionSteps = [
+    { step: '01', title: '입소 상담', desc: '관할 시·군·구 아동보호 담당 부서 문의 및 시설 생활·입소 준비 안내' },
+    { step: '02', title: '아동과 가정의 상황 확인 및 보호계획 수립', desc: '아동의 상황·의견 및 가정 여건을 종합적으로 확인하고 개별 보호계획 수립' },
+    { step: '03', title: '지자체의 보호조치 결정', desc: '관할 시·군·구에서 아동의 상황과 의견 등을 살펴 시설 보호를 공식 결정' },
+    { step: '04', title: '입소 및 초기 적응 지원', desc: '지자체와 입소를 협의하고 아동이 새로운 생활에 안정적으로 적응하도록 지원' }
+  ];
+
   return (
     <div className="view-container">
       <div className="subpage-highlight-banner">
         <p className="subpage-highlight-text">
-          아동의 안전과 권리를 최우선으로 하며, 법정 아동보호체계에 따른 공정한 절차로 입소가 이루어집니다.
+          육영학사는 보호자가 없거나, 보호자가 아동을 양육하기 어렵거나 적절한 보호를 제공하기 어려워 보호가 필요한 아동을 돌보는 아동양육시설입니다.
         </p>
       </div>
 
-      {/* 입소 대상 안내 */}
-      <h3 className="content-section-title">
-        <ShieldAlert size={18} className="section-icon-sprout" /> 입소 대상 (보호대상 아동)
-      </h3>
-      <div style={{
-        background: '#f8fafc',
-        border: '1px solid #dce4eb',
-        borderRadius: '8px',
-        padding: '20px',
-        marginBottom: '26px'
-      }}>
-        <ul style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: '14.5px', color: '#444' }}>
-          <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-            <CheckCircle2 size={18} color="#1b65a5" style={{ flexShrink: 0, marginTop: 2 }} />
-            <span>보호자가 없거나 보호자로부터 이탈된 아동</span>
-          </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-            <CheckCircle2 size={18} color="#1b65a5" style={{ flexShrink: 0, marginTop: 2 }} />
-            <span>학대, 방임, 유기 등으로 인해 가정 내 긴급한 분리 및 보호가 필요한 아동</span>
-          </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-            <CheckCircle2 size={18} color="#1b65a5" style={{ flexShrink: 0, marginTop: 2 }} />
-            <span>보호자의 중증 질병, 수감, 실종 또는 극심한 가정사정 등으로 인하여 적절한 양육을 받기 어려운 아동</span>
-          </li>
-          <li style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
-            <CheckCircle2 size={18} color="#1b65a5" style={{ flexShrink: 0, marginTop: 2 }} />
-            <span>지방자치단체 아동복지심의위원회의 의결을 거쳐 시설보호조치가 결정된 아동</span>
-          </li>
-        </ul>
+      <div style={{ fontSize: '15.5px', color: '#333', lineHeight: 1.85, marginBottom: '28px' }}>
+        <p style={{ marginBottom: '14px' }}>
+          관할 시·군·구가 아동의 상황과 의견 등을 살펴 시설 보호를 결정하면, 육영학사는 지자체와 입소를 협의하고 아동이 새로운 생활에 적응하도록 돕습니다.
+        </p>
+        <p style={{
+          background: '#fffdf2',
+          border: '1px solid #f3dc8a',
+          borderLeft: '4px solid #FFD54F',
+          padding: '16px 20px',
+          borderRadius: '8px',
+          fontWeight: 600,
+          color: '#333'
+        }}>
+          입소 상담은 관할 시·군·구 아동보호 담당 부서에 문의해 주세요. 육영학사에서는 시설 생활과 입소 준비에 관해 안내해 드립니다.
+        </p>
       </div>
 
-      {/* 공식 입소 절차 프로세스 다이어그램 (HWPX 6번 반영) */}
+      {/* 입소 절차 단계 카드 */}
       <h3 className="content-section-title">
-        <FileCheck size={18} className="section-icon-sprout" /> 공식 입소 진행 절차
+        <FileCheck size={18} className="section-icon-sprout" /> 입소 진행 절차
       </h3>
-      <p style={{ fontSize: '14px', color: '#666', marginBottom: 16 }}>
-        * 아동복지법에 의거하여, 아동양육시설 입소는 보호자나 시설이 직접 결정할 수 없으며 <strong>관할 시·군·구 지방자치단체의 심의와 보호조치 결정</strong>에 따라 정식으로 진행됩니다.
-      </p>
+
+      <div className="step-flow-banner">
+        <span>입소 상담</span>
+        <ArrowRight size={16} />
+        <span>아동과 가정의 상황 확인 및 보호계획 수립</span>
+        <ArrowRight size={16} />
+        <span>지자체의 보호조치 결정</span>
+        <ArrowRight size={16} />
+        <span>입소 및 초기 적응 지원</span>
+      </div>
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-        gap: '14px',
-        marginBottom: '30px'
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+        gap: '16px',
+        marginBottom: '36px'
       }}>
-        {/* STEP 1 */}
-        <div style={{
-          background: '#ffffff',
-          border: '1px solid #cfdfea',
-          borderRadius: '8px',
-          padding: '18px 16px',
-          borderTop: '4px solid #1b65a5'
-        }}>
-          <div style={{ fontSize: '12px', fontWeight: 800, color: '#1b65a5' }}>STEP 01</div>
-          <div style={{ fontSize: '15px', fontWeight: 700, margin: '6px 0', color: '#222' }}>상담 신청 및 접수</div>
-          <div style={{ fontSize: '13px', color: '#666', lineHeight: 1.5 }}>
-            거주지 관할 시·군·구 아동보호 전담부서 또는 아동보호전문기관 접수
+        {admissionSteps.map((s, idx) => (
+          <div
+            key={s.step}
+            style={{
+              background: '#ffffff',
+              border: '1px solid #d5e5db',
+              borderRadius: '10px',
+              padding: '20px 18px',
+              borderTop: idx % 2 === 0 ? '4px solid #4cab6e' : '4px solid #FFD54F',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+            }}
+          >
+            <div style={{ fontSize: '12px', fontWeight: 800, color: '#3b8f5a' }}>STEP {s.step}</div>
+            <div style={{ fontSize: '15.5px', fontWeight: 800, margin: '8px 0', color: '#222', lineHeight: 1.4 }}>
+              {s.title}
+            </div>
+            <div style={{ fontSize: '13.5px', color: '#555', lineHeight: 1.6 }}>
+              {s.desc}
+            </div>
           </div>
-        </div>
-
-        {/* STEP 2 */}
-        <div style={{
-          background: '#ffffff',
-          border: '1px solid #cfdfea',
-          borderRadius: '8px',
-          padding: '18px 16px',
-          borderTop: '4px solid #1b65a5'
-        }}>
-          <div style={{ fontSize: '12px', fontWeight: 800, color: '#1b65a5' }}>STEP 02</div>
-          <div style={{ fontSize: '15px', fontWeight: 700, margin: '6px 0', color: '#222' }}>현장조사 및 사례판정</div>
-          <div style={{ fontSize: '13px', color: '#666', lineHeight: 1.5 }}>
-            지자체 아동보호전담요원의 가정환경 및 아동 심층 조사 실시
-          </div>
-        </div>
-
-        {/* STEP 3 */}
-        <div style={{
-          background: '#ffffff',
-          border: '1px solid #cfdfea',
-          borderRadius: '8px',
-          padding: '18px 16px',
-          borderTop: '4px solid #59a62a'
-        }}>
-          <div style={{ fontSize: '12px', fontWeight: 800, color: '#59a62a' }}>STEP 03</div>
-          <div style={{ fontSize: '15px', fontWeight: 700, margin: '6px 0', color: '#222' }}>보호조치 결정</div>
-          <div style={{ fontSize: '13px', color: '#666', lineHeight: 1.5 }}>
-            아동복지심의위원회 심의를 통한 시설 보호조치 공식 의결
-          </div>
-        </div>
-
-        {/* STEP 4 */}
-        <div style={{
-          background: '#ffffff',
-          border: '1px solid #cfdfea',
-          borderRadius: '8px',
-          padding: '18px 16px',
-          borderTop: '4px solid #f48024'
-        }}>
-          <div style={{ fontSize: '12px', fontWeight: 800, color: '#f48024' }}>STEP 04</div>
-          <div style={{ fontSize: '15px', fontWeight: 700, margin: '6px 0', color: '#222' }}>육영학사 입소 배정</div>
-          <div style={{ fontSize: '13px', color: '#666', lineHeight: 1.5 }}>
-            시설 인계, 생활실 배정, 초기적응 지원 및 개별 사례관리 착수
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// 2. 입소상담 문의
-export function AdmissionCounselingView() {
-  return (
-    <div className="view-container">
-      <div className="subpage-highlight-banner">
-        <p className="subpage-highlight-text">
-          입소 상담 및 아동 보호 문의는 언제든지 열려 있습니다.
-        </p>
+        ))}
       </div>
 
+      {/* 통합된 입소상담 안내 섹션 */}
+      <h3 className="content-section-title">
+        <PhoneCall size={18} className="section-icon-sprout" /> 입소 상담 및 문의 안내
+      </h3>
       <div style={{
-        background: '#f1f7fc',
-        border: '1px solid #bfd8ec',
-        borderRadius: '8px',
-        padding: '24px',
-        marginBottom: '28px'
+        background: '#f8fbf9',
+        border: '1px solid #cce3d4',
+        borderRadius: '10px',
+        padding: '22px 24px',
+        marginBottom: '22px'
       }}>
-        <h4 style={{ fontSize: '17px', fontWeight: 800, color: '#174e80', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 }}>
-          <PhoneCall size={20} /> 육영학사 입소 안내 문의
-        </h4>
-        <div style={{ fontSize: '24px', fontWeight: 800, color: '#4a9918', marginBottom: 8 }}>
+        <div style={{ fontSize: '15px', fontWeight: 700, color: '#254d38', marginBottom: 6 }}>
+          육영학사 시설 생활 및 입소 준비 안내
+        </div>
+        <div style={{ fontSize: '24px', fontWeight: 800, color: '#3b8f5a', marginBottom: 6 }}>
           {ORG_INFO.tel}
         </div>
         <p style={{ fontSize: '14px', color: '#555', lineHeight: 1.6 }}>
-          입소 대상 자격 및 준비 절차에 대한 일반적인 상담은 육영학사로 전화 주시면 친절하고 상세하게 안내해 드립니다.
+          운영시간: {ORG_INFO.hours} | 팩스: {ORG_INFO.fax} | 이메일: {ORG_INFO.email}
         </p>
       </div>
 
-      <h3 className="content-section-title">
-        <HelpCircle size={18} className="section-icon-sprout" /> 담당 행정기관 안내
-      </h3>
       <table className="custom-info-table">
         <tbody>
           <tr>
-            <th style={{ width: '26%' }}>공식 입소 심의·신청</th>
-            <td>아동의 주민등록상 거주지 관할 <strong>시·군·구청 아동보호 담당부서</strong></td>
+            <th style={{ width: '26%' }}>입소 상담 및 신청</th>
+            <td>관할 <strong>시·군·구 아동보호 담당 부서</strong></td>
           </tr>
           <tr>
             <th>아동학대 신고 및 긴급상담</th>
             <td><strong>112</strong> (경찰청) 또는 <strong>1391</strong> (아동보호전문기관)</td>
           </tr>
           <tr>
-            <th>육영학사 대표전화</th>
-            <td>{ORG_INFO.tel} (운영시간: 평일 09:00 ~ 18:00)</td>
+            <th>육영학사 안내 문의</th>
+            <td><strong>{ORG_INFO.tel}</strong> (시설 생활과 입소 준비에 관해 상세히 안내해 드립니다)</td>
           </tr>
         </tbody>
       </table>
+    </div>
+  );
+}
+
+// 2. 퇴소절차 (요청사항 34-40번: 원가정 복귀 및 자립을 위한 보호 종료 게시 문안 100% 반영)
+export function DischargeProcedureView() {
+  const returnSteps = [
+    { step: '01', title: '가정 복귀 신청', desc: '친권자나 후견인 등이 관할 지자체에 가정 복귀 신청' },
+    { step: '02', title: '아동 의견과 가정의 안전·양육 여건 확인', desc: '아동의 의견과 가정의 양육 여건, 안전, 관계기관 의견 종합 확인' },
+    { step: '03', title: '지자체의 복귀 결정', desc: '관할 지자체에서 심의를 통해 원가정 복귀 여부 결정' },
+    { step: '04', title: '가정 복귀와 적응 지원', desc: '복귀 후 관계기관과 협력해 아동의 적응을 살피고 필요한 지원 연계' }
+  ];
+
+  return (
+    <div className="view-container">
+      <div className="subpage-highlight-banner">
+        <p className="subpage-highlight-text">
+          아동의 의사와 안전을 최우선으로 고려하여 원가정 복귀와 자립을 위한 보호 종료 과정을 세심하게 지원합니다.
+        </p>
+      </div>
+
+      {/* 1. 원가정 복귀 */}
+      <h3 className="content-section-title">
+        <Home size={18} className="section-icon-sprout" /> 원가정 복귀
+      </h3>
+      <div style={{
+        background: '#ffffff',
+        border: '1px solid #d5e5db',
+        borderRadius: '10px',
+        padding: '24px',
+        marginBottom: '24px',
+        fontSize: '15px',
+        color: '#333',
+        lineHeight: 1.85
+      }}>
+        <p style={{ marginBottom: '14px' }}>
+          육영학사는 보호 중에도 아동의 의사와 안전, 개별 보호계획을 고려해 가족과의 면접교섭을 정기적으로 지원합니다. 원가정 복귀를 준비하는 경우에는 원가정복귀 프로그램을 통해 아동과 가족이 관계를 이어가고 함께 지낼 준비를 할 수 있도록 돕습니다.
+        </p>
+        <p>
+          친권자나 후견인 등은 관할 지자체에 가정 복귀를 신청할 수 있습니다. 지자체는 아동의 의견과 가정의 양육 여건, 안전, 관계기관 의견을 종합해 복귀 여부를 결정합니다. 복귀 후에는 관계기관과 협력해 아동의 적응을 살피고 필요한 지원을 연계합니다.
+        </p>
+      </div>
+
+      <div className="step-flow-banner">
+        <span>가정 복귀 신청</span>
+        <ArrowRight size={16} />
+        <span>아동 의견과 가정의 안전·양육 여건 확인</span>
+        <ArrowRight size={16} />
+        <span>지자체의 복귀 결정</span>
+        <ArrowRight size={16} />
+        <span>가정 복귀와 적응 지원</span>
+      </div>
+
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+        gap: '16px',
+        marginBottom: '40px'
+      }}>
+        {returnSteps.map((s, idx) => (
+          <div
+            key={s.step}
+            style={{
+              background: '#ffffff',
+              border: '1px solid #d5e5db',
+              borderRadius: '10px',
+              padding: '20px 18px',
+              borderTop: idx % 2 === 0 ? '4px solid #4cab6e' : '4px solid #FFD54F',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+            }}
+          >
+            <div style={{ fontSize: '12px', fontWeight: 800, color: '#3b8f5a' }}>STEP {s.step}</div>
+            <div style={{ fontSize: '15.5px', fontWeight: 800, margin: '8px 0', color: '#222', lineHeight: 1.4 }}>
+              {s.title}
+            </div>
+            <div style={{ fontSize: '13.5px', color: '#555', lineHeight: 1.6 }}>
+              {s.desc}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* 2. 자립을 위한 보호 종료 */}
+      <h3 className="content-section-title">
+        <Compass size={18} className="section-icon-sprout" /> 자립을 위한 보호 종료
+      </h3>
+      <div style={{
+        background: 'linear-gradient(135deg, #f8fbf9 0%, #fffdf5 100%)',
+        border: '1px solid #d5e5db',
+        borderLeft: '5px solid #4cab6e',
+        borderRadius: '10px',
+        padding: '26px',
+        fontSize: '15.5px',
+        color: '#333',
+        lineHeight: 1.85
+      }}>
+        <p>
+          육영학사는 아동·청년과 함께 진학·취업, 주거, 생활비 관리 등 퇴소 후 생활을 준비합니다. <strong>18세가 되어 보호를 연장할 의사가 있는 경우 법에 따라 25세에 달할 때까지 보호기간을 연장</strong>할 수 있습니다. 보호 종료를 준비하는 경우에는 본인의 의사와 준비 상황을 확인하고 관할 지자체와 절차를 진행합니다. 퇴소 전후에는 자립지원전담기관 등과 연계해 필요한 지원을 안내합니다.
+        </p>
+      </div>
     </div>
   );
 }

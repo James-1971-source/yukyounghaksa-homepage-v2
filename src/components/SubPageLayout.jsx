@@ -8,20 +8,20 @@ const CATEGORY_META = {
     desc: '함께 살아가며 스스로 살아갈 힘을 키우는 따뜻한 보금자리 육영학사를 소개합니다.'
   },
   admission: {
-    eng: 'ADMISSION GUIDE',
-    desc: '아동의 권익과 안전한 보호를 최우선으로 생각하는 입소 절차 및 상담 안내입니다.'
+    eng: 'ADMISSION & DISCHARGE GUIDE',
+    desc: '아동의 권익과 안전한 보호를 최우선으로 생각하는 입퇴소 절차 및 상담 안내입니다.'
   },
   program: {
     eng: 'PROGRAMS & SERVICES',
-    desc: '아이들의 건강한 성장과 자립 역량을 키우는 10대 지원사업과 특성화 프로그램을 소개합니다.'
+    desc: '아이들의 건강한 성장과 자립 역량을 키우는 기본사업과 맞춤형·특성화 프로그램을 소개합니다.'
   },
   support: {
-    eng: 'DONATION & VOLUNTEER',
-    desc: '후원자님과 자원봉사자님의 따뜻한 나눔이 아이들의 희망찬 내일을 만듭니다.'
+    eng: 'COMMUNITY PARTNERSHIP',
+    desc: '후원과 자원봉사, 지정기탁, 협약·결연으로 아이들의 희망찬 내일을 함께 만듭니다.'
   },
   independence: {
     eng: 'SELF-RELIANCE CENTER',
-    desc: '보호아동 및 자립준비청년을 위한 주거·금융·취업 정보와 전담기관 연계 안내입니다.'
+    desc: '보호아동 및 자립준비청년을 위한 주거·금융·취업 정보와 자립지원 자원 연계 안내입니다.'
   },
   community: {
     eng: 'COMMUNITY & NEWS',
@@ -39,14 +39,14 @@ export default function SubPageLayout({ currentRoute, onNavigate, children }) {
 
   return (
     <div>
-      {/* 1. Shinsengwon Sub-Visual Banner */}
+      {/* 1. Sub-Visual Banner */}
       <section className={`sub-visual sub-${categoryObj.id}`}>
         <h1>{categoryObj.title}</h1>
         <p>{meta.desc}</p>
         <span className="sub-eng">{meta.eng}</span>
       </section>
 
-      {/* 2. Shinsengwon Green Breadcrumb Bar (.sub-lnb-bar) */}
+      {/* 2. Green Breadcrumb Bar (.sub-lnb-bar) */}
       <div className="sub-lnb-bar">
         <div className="sub-lnb-inner">
           <button type="button" onClick={() => onNavigate('home', '')}>
@@ -61,7 +61,7 @@ export default function SubPageLayout({ currentRoute, onNavigate, children }) {
         </div>
       </div>
 
-      {/* 3. Shinsengwon 2-Column Sub-Body (.side-menu + .content) */}
+      {/* 3. 2-Column Sub-Body (.side-menu + .content) */}
       <div className="sub-body">
         <aside className="side-menu">
           <div className="side-tit">
@@ -97,7 +97,7 @@ export default function SubPageLayout({ currentRoute, onNavigate, children }) {
                 rel="noopener noreferrer"
                 className="side-ext-btn happybean"
               >
-                <span>🌱 해피빈 모금함</span>
+                <span>🌱 해피빈 기부하기</span>
                 <span>↗</span>
               </a>
               <a
@@ -106,7 +106,7 @@ export default function SubPageLayout({ currentRoute, onNavigate, children }) {
                 rel="noopener noreferrer"
                 className="side-ext-btn kakao"
               >
-                <span>💬 카카오톡 채널 상담</span>
+                <span>💬 카카오톡 채널 문의</span>
                 <span>↗</span>
               </a>
             </div>

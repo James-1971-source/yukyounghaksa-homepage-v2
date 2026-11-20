@@ -1,7 +1,9 @@
-// 육영학사 종합 데이터 모델 (HWPX 문서 및 공식 정보 100% 반영)
+// 육영학사 종합 데이터 모델 (2026-11-13 2차 수정 요청사항 100% 반영)
 
 export const ORG_INFO = {
   name: "육영학사",
+  hanjaName: "育英學舍",
+  nameMeaning: "영재를 가르치고 키우는 집",
   corporateName: "사회복지법인 육영복지재단",
   englishName: "YUK YOUNG HAK SA",
   director: "이혜련",
@@ -13,8 +15,8 @@ export const ORG_INFO = {
   tel: "053-986-1009",
   fax: "053-986-2009",
   email: "yukyoung1009@hanmail.net",
-  businessNumber: "504-82-02685", // 표기용
-  domain: "yukyoung1009.or.kr",
+  businessNumber: "504-82-02685",
+  domain: "www.yukyoung1009.or.kr",
   bank: {
     name: "iM뱅크 (대구은행)",
     account: "504-10-371780-0",
@@ -26,11 +28,11 @@ export const ORG_INFO = {
   vmsUrl: "https://www.vms.or.kr"
 };
 
-// 상단 네비게이션 메뉴 구조
+// 상단 네비게이션 메뉴 구조 (2차 수정 요청사항 반영)
 export const NAV_ITEMS = [
   {
     id: "about",
-    title: "학사소개",
+    title: "시설 소개",
     subItems: [
       { id: "greeting", title: "시설장 인사말" },
       { id: "corporate", title: "법인 및 시설소개" },
@@ -42,28 +44,32 @@ export const NAV_ITEMS = [
   },
   {
     id: "admission",
-    title: "입소안내",
+    title: "입퇴소안내",
     subItems: [
       { id: "target", title: "입소대상 및 절차" },
-      { id: "counseling", title: "입소상담 안내" }
+      { id: "discharge", title: "퇴소절차" }
     ]
   },
   {
     id: "program",
     title: "사업 및 프로그램",
     subItems: [
-      { id: "overview", title: "프로그램 안내" },
-      { id: "independence-program", title: "특성화 자립프로그램 「꿈JOB끼」" }
+      { id: "overview", title: "기본사업" },
+      { id: "customized", title: "맞춤형서비스" },
+      { id: "independence-program", title: "특성화 자립프로그램 「꿈JOB끼」" },
+      { id: "unit-outing", title: "유닛나들이" }
     ]
   },
   {
     id: "support",
-    title: "후원 및 자원봉사",
+    title: "지역사회연계",
     subItems: [
       { id: "donation", title: "후원안내" },
       { id: "donation-apply", title: "온라인 후원신청" },
+      { id: "designated-deposit", title: "지정기탁서" },
       { id: "volunteer", title: "자원봉사 안내" },
-      { id: "volunteer-apply", title: "온라인 자원봉사신청" }
+      { id: "volunteer-apply", title: "온라인 자원봉사신청" },
+      { id: "partnership", title: "협약·결연" }
     ]
   },
   {
@@ -71,7 +77,7 @@ export const NAV_ITEMS = [
     title: "자립정보센터",
     subItems: [
       { id: "info-list", title: "자립정보 게시판" },
-      { id: "agency-link", title: "자립지원전담기관 연계" }
+      { id: "agency-link", title: "자립지원 자원 연계" }
     ]
   },
   {
@@ -97,15 +103,15 @@ export const HISTORY_ITEMS = [
   { year: "2024", date: "현재", title: "아동 맞춤형 양육 및 자립특화 프로그램 「꿈JOB끼」 운영" }
 ];
 
-// 직위별 주요 업무 표 데이터
+// 직위별 주요 업무 표 데이터 (2차 수정 요청사항 6번 직책 표기 반영)
 export const JOB_ROLES = [
   {
-    role: "원장",
+    role: "시설장(원장)",
     task: "시설 운영 총괄, 운영방향 수립, 주요 의사결정 및 대외협력"
   },
   {
-    role: "자립지원전담요원 (사무국장 대행)",
-    task: "시설 운영 및 사업 총괄 지원, 사업계획 및 결과관리, 직원교육·인권 및 고충관리, 외부자원 및 지역사회 연계, 시설아동 및 보호연장아동 자립지원, 퇴소아동 사후관리 및 자립지원전담기관 연계"
+    role: "사무국장(자립지원전담요원)",
+    task: "생활지원팀·운영지원팀 총괄, 사업계획 및 결과관리, 직원교육·인권 및 고충관리, 외부자원 및 지역사회 연계, 시설아동 및 보호연장아동 자립지원, 퇴소아동 사후관리 및 자립지원전담기관 연계"
   },
   {
     role: "선임생활지도원",
@@ -129,7 +135,7 @@ export const JOB_ROLES = [
   }
 ];
 
-// 10대 지원 프로그램
+// 기본사업 세부 영역
 export const PROGRAMS = [
   {
     id: 1,
@@ -239,15 +245,15 @@ export const INITIAL_NOTICES = [
   },
   {
     id: 5,
-    title: "[안내] 기부금영수증 발급 절차 및 신청 방법 안내",
+    title: "[안내] 기부금영수증 발급 절차 및 지정기탁서 제출 안내",
     date: "2026-07-20",
     author: "회계담당",
     views: 450,
-    content: "소중한 후원금을 보내주신 후원자님들께 감사드리며, 연말정산용 기부금영수증 신청 방법(개인 및 사업자)을 상세히 안내해 드립니다."
+    content: "소중한 후원금을 보내주신 후원자님들께 감사드리며, 연말정산용 기부금영수증 신청 방법 및 지정기탁서 작성·제출 절차를 상세히 안내해 드립니다."
   }
 ];
 
-// 육영학사 이야기 (갤러리/활동소식 - 육영학사 전용 한국 아동 이미지 적용)
+// 육영학사 이야기 (갤러리/활동소식)
 export const INITIAL_STORIES = [
   {
     id: 1,
@@ -259,31 +265,31 @@ export const INITIAL_STORIES = [
   },
   {
     id: 2,
+    title: "책과 함께 꿈을 키우는 독서·학습 멘토링 시간",
+    date: "2026-09-05",
+    category: "학습·멘토링",
+    img: "/images/sub/story-3.jpg",
+    desc: "도서실에 둘러앉아 좋아하는 책을 함께 읽고 이야기를 나누며 즐겁게 지혜와 우정을 키워나갔습니다."
+  },
+  {
+    id: 3,
     title: "특성화 자립프로그램 「꿈JOB끼」 바리스타 직업체험",
-    date: "2026-09-02",
+    date: "2026-08-28",
     category: "진로·직업",
     img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80",
     desc: "전문 바리스타 강사님과 함께 핸드드립과 라떼아트를 직접 실습해보며 자신의 미래 직업을 탐색하는 뜻깊은 시간이었습니다."
   },
   {
-    id: 3,
-    title: "책과 함께 꿈을 키우는 독서·학습 멘토링 시간",
-    date: "2026-08-28",
-    category: "사회성·참여",
-    img: "/images/sub/story-3.jpg",
-    desc: "도서실에 둘러앉아 좋아하는 책을 함께 읽고 이야기를 나누며 즐겁게 지혜와 우정을 키워나갔습니다."
-  },
-  {
     id: 4,
     title: "푸른 잔디밭 위 신나는 체육 및 야외활동",
     date: "2026-08-15",
-    category: "생활환경",
+    category: "생활·체육",
     img: "/images/sub/story-4.jpg",
     desc: "아이들이 드넓은 잔디밭을 마음껏 달리며 건강하고 활기찬 에너지를 발산하는 행복한 하루를 보냈습니다."
   }
 ];
 
-// 자립정보 게시판 초기 데이터 (HWPX 의견 완벽 반영: 주거, 취업, 금융, 장학금 등)
+// 자립정보 게시판 초기 데이터
 export const INITIAL_INDEPENDENCE_INFO = [
   {
     id: 1,
@@ -300,7 +306,7 @@ export const INITIAL_INDEPENDENCE_INFO = [
     title: "디딤씨앗통장(CDA) 만기 해지 및 적립금 매칭지원금 수령 가이드",
     date: "2026-08-30",
     target: "만 18세 이상 퇴소 및 자립준비 청년",
-    link: "https://www.adopcenter.or.kr",
+    link: "https://www.ncrc.or.kr",
     content: "정부 1:2 매칭으로 모인 디딤씨앗 적립금을 학자금, 주거비, 취업훈련비 용도로 신청하는 방법과 제출 서류 안내입니다."
   },
   {
@@ -309,7 +315,7 @@ export const INITIAL_INDEPENDENCE_INFO = [
     title: "국민취업지원제도 1유형 자립준비청년 특화 취업수당 및 훈련비 지원",
     date: "2026-08-19",
     target: "구직 활동 중인 자립준비청년",
-    link: "https://www.kua.go.kr",
+    link: "https://www.work24.go.kr",
     content: "월 50만원씩 최대 6개월 구직촉진수당 지급 및 무료 직업훈련 바우처 제공 프로그램 안내입니다."
   },
   {
@@ -365,57 +371,5 @@ export const INITIAL_NEWSLETTERS = [
     issueNumber: "제55호",
     coverImg: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=80",
     downloadUrl: "#"
-  }
-];
-
-// 유관기관 링크 모음 (기관 공식 심벌 로고 및 기관명 함께 표시)
-export const PARTNER_LINKS = [
-  {
-    name: "대구광역시",
-    url: "https://www.daegu.go.kr",
-    logoText: "대구광역시청",
-    logo: "/images/partners/symbol_daegu.png"
-  },
-  {
-    name: "대구동구청",
-    url: "https://www.dong.daegu.kr",
-    logoText: "대구광역시 동구",
-    logo: "/images/partners/symbol_donggu.png"
-  },
-  {
-    name: "아동권리보장원",
-    url: "https://www.ncrc.or.kr",
-    logoText: "국가아동권리보장원",
-    logo: "/images/partners/symbol_ncrc.png"
-  },
-  {
-    name: "대구아동복지협회",
-    url: "http://www.daeguchild.org",
-    logoText: "아동복지시설협회",
-    logo: "/images/partners/symbol_daeguchild.svg"
-  },
-  {
-    name: "자립지원전담기관",
-    url: "https://jarip.ncrc.or.kr",
-    logoText: "대구자립통합지원센터",
-    logo: "/images/partners/symbol_jarip.png"
-  },
-  {
-    name: "VMS 사회복지인증",
-    url: "https://www.vms.or.kr",
-    logoText: "자원봉사인증관리",
-    logo: "/images/partners/symbol_vms.png"
-  },
-  {
-    name: "네이버 해피빈",
-    url: "https://happybean.naver.com",
-    logoText: "온라인 나눔포털",
-    logo: "/images/partners/symbol_happybean.svg"
-  },
-  {
-    name: "보건복지부",
-    url: "https://www.mohw.go.kr",
-    logoText: "대한민국 보건복지부",
-    logo: "/images/partners/symbol_mohw.png"
   }
 ];
