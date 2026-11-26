@@ -137,7 +137,7 @@ export default function MainBottomSection({
               </div>
             </div>
 
-            {/* (3) 무엇을 도와드릴까요?: 문의 영역 + 카카오톡 채널 바로가기 + PC QR코드 */}
+            {/* (3) 무엇을 도와드릴까요?: 문의 영역 + 카카오톡 채널 바로가기 + 실제 PC QR코드 */}
             <div className="triple-card help-card">
               <div className="triple-card-head">
                 <h4>무엇을 도와드릴까요?</h4>
@@ -148,6 +148,9 @@ export default function MainBottomSection({
                 </div>
                 <div className="help-sub">
                   팩스 {ORG_INFO.fax} · 이메일 {ORG_INFO.email}
+                </div>
+                <div className="help-sub" style={{ marginTop: '3px', color: '#254d38', fontWeight: 700 }}>
+                  카카오톡 채널 검색ID : {ORG_INFO.kakaoChannelId || 'yukyong1009'}
                 </div>
               </div>
               <div className="help-kakao-row">
@@ -160,27 +163,19 @@ export default function MainBottomSection({
                   <MessageCircle size={18} /> 카카오톡 채널
                 </a>
 
-                {/* PC에서는 QR코드를 함께 표시 */}
+                {/* PC에서는 전달받은 실제 육영학사 카카오톡 채널 QR코드를 함께 표시 */}
                 <a
                   href={ORG_INFO.kakaoChannelUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="pc-qr-box"
-                  title="카카오톡 채널 QR코드 (스마트폰 카메라로 스캔해 친구 추가)"
+                  title="육영학사 카카오톡 채널 QR코드 (스마트폰 카메라로 스캔해 친구 추가)"
                 >
-                  <svg
-                    viewBox="0 0 64 64"
-                    width="48"
-                    height="48"
-                    aria-label="카카오톡 채널 QR코드"
-                  >
-                    <rect width="64" height="64" rx="6" fill="#ffffff" />
-                    <path
-                      d="M8 8h18v18H8V8zm4 4v10h10V12H12zm26-4h18v18H38V8zm4 4v10h10V12H42zM8 38h18v18H8V38zm4 4v10h10V42H12zm20-26h4v4h-4v-4zm0 8h4v8h-4v-8zm-8 8h12v4H24v-4zm14 6h6v6h-6v-6zm10 0h8v4h-8v-4zm-10 10h8v8h-8v-8zm12 4h6v4h-6v-4z"
-                      fill="#222222"
-                    />
-                  </svg>
-                  <span>카카오톡 QR</span>
+                  <img
+                    src={ORG_INFO.kakaoQrImg || '/images/kakao-qr.jpg'}
+                    alt="육영학사 카카오톡 채널 QR코드"
+                    style={{ width: '74px', height: '74px', objectFit: 'contain', borderRadius: '6px' }}
+                  />
                 </a>
               </div>
             </div>

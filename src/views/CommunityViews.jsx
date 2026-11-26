@@ -1,6 +1,6 @@
 import React from 'react';
 import { INITIAL_NEWSLETTERS } from '../data/siteData';
-import { BookOpen, ShieldCheck } from 'lucide-react';
+import { BookOpen, Download, ShieldCheck } from 'lucide-react';
 
 // 1. 공지사항
 export function NoticeListView({ notices, selectedNotice, onSelectNotice, onBackToList }) {
@@ -78,20 +78,20 @@ export function NoticeListView({ notices, selectedNotice, onSelectNotice, onBack
   );
 }
 
-// 2. 육영 소식지
+// 2. 육영 소식지 (실제 2025~2026년 소식지 「꿈꾸는 아이들」 PDF 열람 및 다운로드 연결)
 export function NewsletterView() {
   return (
     <div className="view-container">
       <div className="subpage-highlight-banner">
         <p className="subpage-highlight-text">
-          육영학사에서 정기적으로 발행하는 소식지입니다. 이전 호까지 지속적으로 열람하실 수 있습니다.
+          육영학사에서 정기적으로 발행하는 소식지 「꿈꾸는 아이들」입니다. 이전 호까지 상시 열람 및 PDF 내려받기가 가능합니다.
         </p>
       </div>
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-        gap: '20px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+        gap: '24px',
         marginBottom: '30px'
       }}>
         {INITIAL_NEWSLETTERS.map((item) => (
@@ -100,39 +100,81 @@ export function NewsletterView() {
             style={{
               background: '#ffffff',
               border: '1px solid #d5e5db',
-              borderRadius: '10px',
+              borderRadius: '12px',
               overflow: 'hidden',
-              boxShadow: '0 2px 6px rgba(0,0,0,0.05)',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
               display: 'flex',
               flexDirection: 'column'
             }}
           >
-            <div style={{ height: '220px', overflow: 'hidden', background: '#eef4f0' }}>
+            <a
+              href={item.downloadUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                height: '340px',
+                overflow: 'hidden',
+                background: '#f8fbf9',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '12px',
+                borderBottom: '1px solid #edf2ef'
+              }}
+              title={`${item.title} 새 창에서 열람`}
+            >
               <img
                 src={item.coverImg}
                 alt={item.title}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  objectFit: 'contain',
+                  boxShadow: '0 3px 10px rgba(0,0,0,0.12)',
+                  borderRadius: '4px'
+                }}
               />
-            </div>
-            <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            </a>
+            <div style={{ padding: '18px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
               <div>
-                <span style={{ fontSize: '11.5px', color: '#254d38', fontWeight: 800, background: '#eaf5ee', padding: '3px 8px', borderRadius: '4px' }}>
+                <span style={{ fontSize: '12px', color: '#254d38', fontWeight: 800, background: '#eaf5ee', padding: '4px 10px', borderRadius: '6px' }}>
                   {item.issueNumber}
                 </span>
-                <h4 style={{ fontSize: '15px', fontWeight: 700, margin: '8px 0 4px 0', color: '#222' }}>
+                <h4 style={{ fontSize: '16px', fontWeight: 800, margin: '10px 0 6px 0', color: '#222', lineHeight: 1.4 }}>
                   {item.title}
                 </h4>
-                <div style={{ fontSize: '12px', color: '#888' }}>발행일: {item.date}</div>
+                <div style={{ fontSize: '12.5px', color: '#666' }}>발행일: {item.date}</div>
+                {item.editor && (
+                  <div style={{ fontSize: '12px', color: '#888', marginTop: '2px' }}>{item.editor}</div>
+                )}
               </div>
 
-              <div style={{ marginTop: 14 }}>
-                <button
-                  type="button"
-                  onClick={() => alert(`[${item.title}] 게시용 PDF 소식지 파일이 전달되는 대로 연결됩니다.`)}
+              <div style={{ marginTop: 16, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                <a
+                  href={item.downloadUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
-                    width: '100%',
-                    padding: '9px 0',
-                    borderRadius: '6px',
+                    padding: '10px 0',
+                    borderRadius: '8px',
+                    background: '#4cab6e',
+                    color: '#ffffff',
+                    fontSize: '13px',
+                    fontWeight: 700,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 6
+                  }}
+                >
+                  <BookOpen size={14} /> 바로 열람
+                </a>
+                <a
+                  href={item.downloadUrl}
+                  download={item.fileName || `${item.title}.pdf`}
+                  style={{
+                    padding: '10px 0',
+                    borderRadius: '8px',
                     border: '1px solid #3b8f5a',
                     color: '#254d38',
                     fontSize: '13px',
@@ -141,12 +183,11 @@ export function NewsletterView() {
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: 6,
-                    background: '#f4faf6',
-                    cursor: 'pointer'
+                    background: '#f4faf6'
                   }}
                 >
-                  <BookOpen size={14} /> 소식지 열람 (PDF)
-                </button>
+                  <Download size={14} /> PDF 저장
+                </a>
               </div>
             </div>
           </div>

@@ -15,7 +15,8 @@ export const ORG_INFO = {
   tel: "053-986-1009",
   fax: "053-986-2009",
   email: "yukyoung1009@hanmail.net",
-  businessNumber: "504-82-02685",
+  businessNumber: "181-82-00358",
+  corporateRegNumber: "170132-0000262",
   domain: "www.yukyoung1009.or.kr",
   bank: {
     name: "iM뱅크 (대구은행)",
@@ -23,7 +24,9 @@ export const ORG_INFO = {
     holder: "육영복지재단 육영학사"
   },
   hours: "평일 09:00 ~ 18:00 (아동 생활관 24시간 운영)",
-  kakaoChannelUrl: "https://pf.kakao.com",
+  kakaoChannelId: "yukyong1009",
+  kakaoChannelUrl: "http://pf.kakao.com/_QhxjqX",
+  kakaoQrImg: "/images/kakao-qr.jpg",
   happybeanUrl: "https://happybean.naver.com",
   vmsUrl: "https://www.vms.or.kr"
 };
@@ -338,38 +341,36 @@ export const INITIAL_INDEPENDENCE_INFO = [
   }
 ];
 
-// 육영 소식지 데이터
+// 육영 소식지 데이터 (실제 2025~2026년 2년치 소식지 PDF 및 표지 반영)
 export const INITIAL_NEWSLETTERS = [
   {
     id: 1,
-    title: "육영학사 소식지 2026년 가을호 (제58호)",
-    date: "2026-09-01",
-    issueNumber: "제58호",
-    coverImg: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=500&q=80",
-    downloadUrl: "#"
+    title: "육영학사 소식지 「꿈꾸는 아이들」 2026년 상반호",
+    date: "2026. 08.",
+    issueNumber: "2026 상반호",
+    editor: "발행인 이혜련 · 편집인 박현미",
+    coverImg: "/newsletters/cover-2026-1.jpg",
+    downloadUrl: "/newsletters/newsletter-2026-1.pdf",
+    fileName: "육영학사_소식지_2026년_상반호.pdf"
   },
   {
     id: 2,
-    title: "육영학사 소식지 2026년 여름호 (제57호)",
-    date: "2026-06-01",
-    issueNumber: "제57호",
-    coverImg: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=500&q=80",
-    downloadUrl: "#"
+    title: "육영학사 소식지 「꿈꾸는 아이들」 2025년 하반호",
+    date: "2026. 02.",
+    issueNumber: "2025 하반호",
+    editor: "발행인 이혜련 · 편집인 박현미",
+    coverImg: "/newsletters/cover-2025-2.jpg",
+    downloadUrl: "/newsletters/newsletter-2025-2.pdf",
+    fileName: "육영학사_소식지_2025년_하반호.pdf"
   },
   {
     id: 3,
-    title: "육영학사 소식지 2026년 봄호 (제56호)",
-    date: "2026-03-01",
-    issueNumber: "제56호",
-    coverImg: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=500&q=80",
-    downloadUrl: "#"
-  },
-  {
-    id: 4,
-    title: "육영학사 소식지 2025년 겨울호 (제55호)",
-    date: "2025-12-01",
-    issueNumber: "제55호",
-    coverImg: "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=500&q=80",
-    downloadUrl: "#"
+    title: "육영학사 소식지 「꿈꾸는 아이들」 2025년 상반호",
+    date: "2025. 09.",
+    issueNumber: "2025 상반호",
+    editor: "발행인 이혜련 · 편집인 송지혜",
+    coverImg: "/newsletters/cover-2025-1.jpg",
+    downloadUrl: "/newsletters/newsletter-2025-1.pdf",
+    fileName: "육영학사_소식지_2025년_상반호.pdf"
   }
 ];
